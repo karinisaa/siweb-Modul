@@ -1,0 +1,300 @@
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.hero {
+    height: 400px;
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.dashboard-card {
+    transition: 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    margin-top: 50px;
+}
+
+/* ==========================================
+   LOGIN PAGE STYLES
+   ========================================== */
+
+/* The HTML uses <body class="login-page"> so we target that class here. */
+.login-page {
+    background-color: #f3f6fc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 520px;
+}
+
+.login-brand {
+    text-align: center;
+    color: #f15a24;
+    font-weight: 700;
+    letter-spacing: .25em;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.login-brand span {
+    color: #7a4c12;
+    margin: 0 8px;
+}
+
+.login-card {
+    background: linear-gradient(180deg, #fff 0%, #fff 60%, #fef5ea 100%);
+    border-radius: 32px;
+    box-shadow: 0 24px 80px rgba(34, 60, 80, 0.12);
+    overflow: hidden;
+}
+
+.login-card__hero {
+    height: 160px;
+    background: radial-gradient(circle at top left, rgba(255, 164, 48, 0.26), transparent 45%),
+                radial-gradient(circle at bottom right, rgba(255, 205, 120, 0.2), transparent 40%);
+    position: relative;
+}
+
+.login-card__hero::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 193, 7, 0.12);
+    border-radius: 50%;
+}
+
+.login-card__content {
+    padding: 32px 34px 30px;
+}
+
+.login-card__icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #f89d21, #ffb54c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: -46px auto 16px;
+    box-shadow: 0 18px 40px rgba(248, 157, 33, 0.18);
+}
+
+.login-card h1 {
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 1.95rem;
+    letter-spacing: -.02em;
+    font-weight: 700;
+    color: #312e43;
+}
+
+.login-card form {
+    display: grid;
+    gap: 16px;
+}
+
+.login-card .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    letter-spacing: .12em;
+    color: #7c7a91;
+    text-transform: uppercase;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon .icon {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #9a8fa6;
+}
+
+.input-icon input {
+    padding-left: 48px;
+    border-radius: 16px;
+    border: 1px solid #e2dfe7;
+    box-shadow: inset 0 1px 2px rgba(31, 31, 84, 0.05);
+    height: 52px;
+    font-size: 0.95rem;
+}
+
+.input-icon input::placeholder {
+    color: #b7b2c6;
+}
+
+.remember-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 4px;
+    color: #4f4b66;
+    font-weight: 600;
+}
+
+.remember-row .form-check-input {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+}
+
+.btn-login {
+    width: 100%;
+    border-radius: 16px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #ff8b35, #f6a140);
+    border: none;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 18px 36px rgba(255, 137, 51, 0.22);
+}
+
+.btn-login:hover,
+.btn-login:focus {
+    background: linear-gradient(135deg, #f27a25, #f5a935);
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin: 18px auto 0;
+    font-size: 0.95rem;
+    color: #62607a;
+    text-decoration: none;
+}
+
+.login-note {
+    margin-top: 20px;
+    padding: 18px 18px 16px;
+    border-radius: 18px;
+    background: #fff1df;
+    border: 1px solid rgba(255, 167, 57, 0.25);
+    color: #4a3f2f;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.login-note strong {
+    color: #3e2d12;
+}
+
+.login-note div + div {
+    margin-top: 6px;
+}
+
+
+/* ==========================================
+   DARK MODE STYLES
+   ========================================== */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+body.dark-mode .navbar {
+    background-color: #1a1a2e !important;
+}
+
+body.dark-mode .card {
+    background-color: #1e1e1e;
+    border-color: #333;
+    color: #f0f0f0;
+}
+
+body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+body.dark-mode .modal-header {
+    border-bottom-color: #333;
+}
+
+body.dark-mode .modal-footer {
+    border-top-color: #333;
+}
+
+body.dark-mode .list-group-item {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    border-color: #444;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.dark-mode .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+body.dark-mode .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #aaa;
+}
+
+body.dark-mode footer {
+    background-color: #0d0d0d !important;
+}
+
+/* Dark Mode khusus halaman Login */
+body.dark-mode.login-page {
+    background-color: #0a0a0a;
+}
+
+body.dark-mode .login-card {
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .login-card .text-muted {
+    color: #aaa !important;
+}
+
+body.dark-mode .login-card .text-secondary {
+    color: #bbb !important;
+}
