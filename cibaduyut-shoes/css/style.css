@@ -1,28 +1,26 @@
-body {
+body{
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
-    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-.hero {
+.hero{
     height: 400px;
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../assets/background.jpg");
+    background-image: url("../assets/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
 }
 
-.dashboard-card {
+.dashboard-card{
     transition: 0.3s;
-    cursor: pointer;
 }
 
-.dashboard-card:hover {
+.dashboard-card:hover{
     transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-
-footer {
+footer{
     margin-top: 50px;
 }
 
