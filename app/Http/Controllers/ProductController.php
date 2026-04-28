@@ -32,25 +32,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'product_name' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,category_id',
-            'product_price' => 'required|numeric',
-            'product_stock' => 'required|integer',
-            'product_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048'
-        ]);
 
-        if ($request->hasFile('product_image')) {
-            // Simpan file ke dalam folder: storage/app/public/products
-            $imagePath = $request->file('product_image')->store('products', 'public');
-
-            // Masukkan path/nama file ke dalam array $validateData untuk disimpan ke DB
-            $validateData['product_image'] = $imagePath;
-        }
-
-        Product::create($validateData);
-
-        return redirect()->route('products')->with('success', 'Produk berhasil ditambahkan!');
     }
 
     /**
@@ -74,32 +56,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = product::findOrFail($id);
 
-        $validateData = $request->validate([
-            'product_name' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,category_id',
-            'product_price' => 'required|numeric',
-            'product_stock' => 'required|integer',
-            'product_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
-        ]);
-
-        // Jika user meng-upload gambar baru
-        if ($request->hasFile('product_image')) {
-            // Hapus gambar lama dari storage (jika ada)
-            if ($product->product_image && Storage::disk('public')->exists($product->product_image)) {
-                Storage::disk('public')->delete($product->product_image);
-            }
-
-            // Simpan gambar baru
-            $imagePath = $request->file('product_image')->store('products', 'public');
-            $validateData['product_image'] = $imagePath;
-        }
-
-        // Update data ke database
-        $product->update($validateData);
-
-        return redirect()->route('products')->with('success', 'Produk berhasil diupdate!');
     }
 
     /**
@@ -107,16 +64,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = product::findOrFail($id);
 
-        // Hapus gambar dari storage sebelum menghapus data di database
-        if ($product->product_image && Storage::disk('public')->exists($product->product_image)) {
-            Storage::disk('public')->delete($product->product_image);
-        }
-
-        // Hapus data dari database
-        $product->delete();
-
-        return redirect()->route('products')->with('deleted', 'Produk berhasil dihapus!');
     }
 }
