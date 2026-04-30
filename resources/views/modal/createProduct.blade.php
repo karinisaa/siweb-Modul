@@ -10,9 +10,13 @@
             <label for="category_id" class="form-label">Kategori</label>
             <select class="form-control" id="category_id" name="category_id" required>
                 <option value="">Pilih Kategori</option>
-                @foreach ($category as $cat)
-                    <option value="{{ $cat->category_id }}">{{ $cat->category_name }}</option>
-                @endforeach
+                @if ($category->isEmpty())
+                    <option value="" disabled>Belum ada kategori. Tambahkan kategori terlebih dahulu.</option>
+                @else
+                    @foreach ($category as $cat)
+                        <option value="{{ $cat->category_id }}">{{ $cat->category_name }}</option>
+                    @endforeach
+                @endif
             </select>
         </div>
 

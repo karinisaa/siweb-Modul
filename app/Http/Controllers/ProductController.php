@@ -14,6 +14,23 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if (Category::count() === 0) {
+            Category::insert([
+                [
+                    'category_id' => 1,
+                    'category_name' => 'Sneakers',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'category_id' => 2,
+                    'category_name' => 'Sports',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+        }
+
         $category = Category::all();
         $products = product::with('category')->get();
         return view('product', compact('products', 'category'));
@@ -36,7 +53,7 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,category_id',
             'product_price' => 'required|numeric',
             'product_stock' => 'required|integer',
-            'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($request->hasFile('product_image')) {

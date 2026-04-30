@@ -10,8 +10,29 @@
             </button>
         </div>
 
+        @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="row" id="container-barang">
-            @foreach ($products as $item)
+            @if ($products->isEmpty())
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        Belum ada produk. Silakan tambah produk baru.
+                    </div>
+                </div>
+            @else
+                @foreach ($products as $item)
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         @if ($item->product_image)
@@ -59,6 +80,7 @@
                     </div>
                 </div>
             @endforeach
+            @endif
         </div>
     </div>
 

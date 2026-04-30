@@ -21,7 +21,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
 //Route untuk update produk 
-Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+Route::match(['put', 'patch'], '/products/{id}', [ProductController::class, 'update'])->name('products.update');
 
 //Route untuk delete produk
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');   

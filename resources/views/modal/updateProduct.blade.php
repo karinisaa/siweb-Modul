@@ -10,11 +10,15 @@
         <div class="mb-3">
             <label class="form-label">Kategori</label>
             <select class="form-control" name="category_id" required>
-                @foreach ($category as $cat)
-                    <option value="{{ $cat->category_id }}" {{ $item->category_id == $cat->category_id ? 'selected' : '' }}>
-                        {{ $cat->category_name }}
-                    </option>
-                @endforeach
+                @if ($category->isEmpty())
+                    <option value="" disabled>Belum ada kategori. Tidak bisa mengubah kategori.</option>
+                @else
+                    @foreach ($category as $cat)
+                        <option value="{{ $cat->category_id }}" {{ $item->category_id == $cat->category_id ? 'selected' : '' }}>
+                            {{ $cat->category_name }}
+                        </option>
+                    @endforeach
+                @endif
             </select>
         </div>
 
